@@ -103,27 +103,25 @@ export function useSyncTask(syncTaskType = 'BATCH') {
   //
   const createColumns = (variables: any) => {
     variables.columns = [
-      useTableLink(
-        {
-          title: t('project.synchronization_definition.task_name'),
-          key: 'jobDefineName',
-          ...COLUMN_WIDTH_CONFIG['link_name'],
-          button: {
-            // disabled: (row: any) =>
-            //   !row.jobInstanceEngineId ||
-            //   !row.jobInstanceEngineId.includes('::'),
-            onClick: (row: any) => {
-              router.push({
-                path: `/task/synchronization-instance/${row.jobDefineId}`,
-                query: {
-                  jobInstanceId: row.id,
-                  taskName: row.jobDefineName,
-                }
-              })
-            }
+      useTableLink({
+        title: t('project.synchronization_definition.task_name'),
+        key: 'jobDefineName',
+        ...COLUMN_WIDTH_CONFIG['link_name'],
+        button: {
+          // disabled: (row: any) =>
+          //   !row.jobInstanceEngineId ||
+          //   !row.jobInstanceEngineId.includes('::'),
+          onClick: (row: any) => {
+            router.push({
+              path: `/task/synchronization-instance/${row.jobDefineId}`,
+              query: {
+                jobInstanceId: row.id,
+                taskName: row.jobDefineName
+              }
+            })
           }
         }
-      ),
+      }),
       {
         title: t('project.synchronization_instance.amount_of_data_read'),
         key: 'readRowCount',
@@ -160,36 +158,34 @@ export function useSyncTask(syncTaskType = 'BATCH') {
         render: (row: any) => getRemainTime(row.runningTime),
         ...COLUMN_WIDTH_CONFIG['duration']
       },
-      useTableOperation(
-        {
-          title: t('project.synchronization_instance.operation'),
-          key: 'operation',
-          itemNum: 3,
-          buttons: [
-            {
-              text: t('project.workflow.recovery_suspend'),
-              icon: h(PlayCircleOutlined),
-              onClick: (row) => void handleRecover(row.id)
+      useTableOperation({
+        title: t('project.synchronization_instance.operation'),
+        key: 'operation',
+        itemNum: 3,
+        buttons: [
+          {
+            text: t('project.workflow.recovery_suspend'),
+            icon: h(PlayCircleOutlined),
+            onClick: (row) => void handleRecover(row.id)
+          },
+          {
+            text: t('project.workflow.pause'),
+            icon: h(PauseCircleOutlined),
+            onClick: (row) => void handlePause(row.id)
+          },
+          {
+            isDelete: true,
+            text: t('project.synchronization_instance.delete'),
+            icon: h(DeleteOutlined),
+            onClick: (row) => void handleDel(row.id),
+            onPositiveClick: () => {
+              console.log('123')
             },
-            {
-              text: t('project.workflow.pause'),
-              icon: h(PauseCircleOutlined),
-              onClick: (row) => void handlePause(row.id)
-            },
-            {
-              isDelete: true,
-              text: t('project.synchronization_instance.delete'),
-              icon: h(DeleteOutlined),
-              onClick: (row) => void handleDel(row.id),
-              onPositiveClick: () => {
-                console.log('123')
-              },
-              positiveText: t('project.synchronization_instance.confirm'),
-              popTips: t('project.synchronization_instance.delete_confirm')
-            }
-          ]
-        }
-      )
+            positiveText: t('project.synchronization_instance.confirm'),
+            popTips: t('project.synchronization_instance.delete_confirm')
+          }
+        ]
+      })
     ]
 
     if (variables.tableWidth) {

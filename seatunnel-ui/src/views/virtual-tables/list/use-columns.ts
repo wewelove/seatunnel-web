@@ -19,7 +19,7 @@ import { h, ref, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { EditOutlined } from '@vicons/antd'
 import { NButton, NSpace } from 'naive-ui'
-import {useTableOperation} from "@/hooks";
+import { useTableOperation } from '@/hooks'
 //import type { TableColumns, VirtualTableRecord } from '../types'
 
 export function useColumns(onCallback: Function) {
@@ -83,7 +83,8 @@ export function useColumns(onCallback: Function) {
           {
             isDelete: true,
             text: t('datasource.delete'),
-            onPositiveClick: (rowData) => void onCallback(rowData.tableId, 'delete'),
+            onPositiveClick: (rowData) =>
+              void onCallback(rowData.tableId, 'delete'),
             negativeText: t('datasource.cancel'),
             positiveText: t('datasource.confirm'),
             popTips: t('datasource.delete_confirm')

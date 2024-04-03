@@ -31,7 +31,7 @@ const Dashboard = defineComponent({
   setup() {
     window.$message = useMessage()
     const route = useRoute()
-    let showSide = ref(false)
+    const showSide = ref(false)
 
     const menuKey = ref(route.meta.activeMenu as string)
 
@@ -59,7 +59,7 @@ const Dashboard = defineComponent({
         </NLayoutHeader>
         <NLayoutContent style={{ height: 'calc(100vh - 65px)' }}>
           <NLayout has-sider position='absolute'>
-            { this.showSide && <Sidebar sideKey={this.menuKey} />}
+            {this.showSide && <Sidebar sideKey={this.menuKey} />}
             <NLayoutContent
               native-scrollbar={false}
               style='padding: 16px 22px 0px 22px'
@@ -72,7 +72,10 @@ const Dashboard = defineComponent({
                 style={'height: 100%'}
                 size='small'
               >
-                <router-view key={this.$route.fullPath} class={!this.showSide && 'px-32 py-12'} />
+                <router-view
+                  key={this.$route.fullPath}
+                  class={!this.showSide && 'px-32 py-12'}
+                />
               </NSpace>
             </NLayoutContent>
           </NLayout>

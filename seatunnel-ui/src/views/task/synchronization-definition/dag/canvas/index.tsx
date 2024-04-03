@@ -100,7 +100,10 @@ const DagCanvas = defineComponent({
               ...cell.getData(),
               type: cell.getData().type.toLowerCase(),
               sourceFields: fields,
-              predecessorsNodeId: (graph.value?.getPredecessors(cell) as Cell[]).length > 0 ? graph.value?.getPredecessors(cell)[0].id : ''
+              predecessorsNodeId:
+                (graph.value?.getPredecessors(cell) as Cell[]).length > 0
+                  ? graph.value?.getPredecessors(cell)[0].id
+                  : ''
             }
             currentNodeId = cell.id
             state.show = true

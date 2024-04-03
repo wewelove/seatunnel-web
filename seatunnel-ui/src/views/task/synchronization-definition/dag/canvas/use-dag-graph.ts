@@ -45,11 +45,17 @@ export function useDagGraph(
         if (targetCell?.getData().type === 'sink') {
           return graph.value?.getConnectedEdges(targetCell).length < 1
         }
-        
+
         if (targetCell?.getData().type === 'transform') {
           // The same 'Copy' transform node cannot be connected
-          const srcData = sourceCell?.getData(), tgtData = targetCell?.getData()
-          if (srcData.type === 'transform' && srcData.connectorType === 'Copy' && tgtData.connectorType === 'Copy') return false
+          const srcData = sourceCell?.getData(),
+            tgtData = targetCell?.getData()
+          if (
+            srcData.type === 'transform' &&
+            srcData.connectorType === 'Copy' &&
+            tgtData.connectorType === 'Copy'
+          )
+            return false
 
           // don't connect self
           const edges = graph.value?.getConnectedEdges(targetCell)

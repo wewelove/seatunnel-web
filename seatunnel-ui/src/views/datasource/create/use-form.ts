@@ -18,10 +18,7 @@
 import { onMounted, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import {
-  useFormStructuresStore,
-  StructureItem
-} from '@/store/datasource'
+import { useFormStructuresStore, StructureItem } from '@/store/datasource'
 import { dynamicFormItems } from '@/service/data-source'
 import { useFormField } from '@/components/dynamic-form/use-form-field'
 import { useFormRequest } from '@/components/dynamic-form/use-form-request'
@@ -60,7 +57,9 @@ export function useForm(type: string) {
 
   const getFormItems = async (value: string) => {
     if (formStructuresStore.getItem(value)) {
-      state.formStructure = formStructuresStore.getItem(value) as StructureItem[]
+      state.formStructure = formStructuresStore.getItem(
+        value
+      ) as StructureItem[]
       return
     }
 
@@ -78,7 +77,8 @@ export function useForm(type: string) {
       state.formStructure = useFormStructure(
         res.apis ? useFormRequest(res.apis, res.forms) : res.forms
       ) as any
-    } finally {}
+    } finally {
+    }
   }
 
   const changeType = (value: string) => {

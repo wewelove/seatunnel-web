@@ -78,11 +78,10 @@ const ConfigurationForm = defineComponent({
       emit('tableNameChange', state.model)
     }
 
-    
-    const prevQueryTableName = ref('');
+    const prevQueryTableName = ref('')
     const onTableSearch = debounce((tableName: any) => {
       // rely on database
-      if(state.model.database && prevQueryTableName.value !== tableName) {
+      if (state.model.database && prevQueryTableName.value !== tableName) {
         getTableOptions(state.model.database, tableName)
         prevQueryTableName.value = tableName
       }
@@ -90,17 +89,18 @@ const ConfigurationForm = defineComponent({
 
     const onDatabaseChange = (v: any) => {
       nextTick(() => {
-      if(state.model.database) {
-        let size = state.model.sceneMode === 'MULTIPLE_TABLE' ? 9999999 : 100
+        if (state.model.database) {
+          const size =
+            state.model.sceneMode === 'MULTIPLE_TABLE' ? 9999999 : 100
           getTableOptions(state.model.database as any, '', size)
         }
       })
     }
-    
+
     // watchEffect(() => {
     //   // Track the src input of the transfer and refresh the table name list when the input value change
     //   let query = transfer?.value?.srcPattern
-    //   onTableSearch(query)      
+    //   onTableSearch(query)
     // })
 
     expose({
@@ -214,7 +214,7 @@ const ConfigurationForm = defineComponent({
                   onSearch={onTableSearch}
                   remote
                   virtualScroll
-                  />
+                />
               </NFormItem>
             )}
 
@@ -280,7 +280,7 @@ const ConfigurationForm = defineComponent({
             >
               <NInput
                 v-model={[state.model.query, 'value']}
-                type="textarea"
+                type='textarea'
                 clearable
                 placeholder={t(
                   'project.synchronization_definition.sql_content_label_placeholder'

@@ -90,7 +90,10 @@ export function getDynamicFormItems(pluginName: string): any {
   })
 }
 
-export function getDatasourceTablesById(datasourceId: string, database: string): any {
+export function getDatasourceTablesById(
+  datasourceId: string,
+  database: string
+): any {
   return axios({
     url: `/data-quality/tables/${datasourceId}`,
     method: 'get',

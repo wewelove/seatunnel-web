@@ -227,7 +227,7 @@ export function getTableByDatabase(
   datasourceName: string,
   databaseName: string,
   filterName?: string,
-  size?: number,
+  size?: number
 ): any {
   size = size || 100
   filterName = filterName || ''
@@ -321,6 +321,6 @@ export function executeJob(jobDefineId: number): any {
     method: 'get',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
-    },
+    }
   })
 }

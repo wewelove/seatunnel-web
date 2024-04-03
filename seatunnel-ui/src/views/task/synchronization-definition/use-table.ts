@@ -44,7 +44,7 @@ export function useTable() {
     showModalRef: ref(false),
     statusRef: ref(0),
     row: {},
-    loadingRef: ref(false),
+    loadingRef: ref(false)
   })
 
   const JOB_TYPE = {
@@ -86,36 +86,33 @@ export function useTable() {
         title: t('project.synchronization_definition.update_time'),
         key: 'updateTime'
       },
-      useTableOperation(
-        {
-          title: t('project.synchronization_definition.operation'),
-          key: 'operation',
-          buttons: [
-            {
-              text: t('project.synchronization_definition.edit'),
-              onClick: (row: any) => {
-                router.push({
-                  path: `/task/synchronization-definition/${row.id}`,
-                })
-              },
-              icon: h(EditOutlined)
+      useTableOperation({
+        title: t('project.synchronization_definition.operation'),
+        key: 'operation',
+        buttons: [
+          {
+            text: t('project.synchronization_definition.edit'),
+            onClick: (row: any) => {
+              router.push({
+                path: `/task/synchronization-definition/${row.id}`
+              })
             },
-            
-            {
-              text: t('project.synchronization_definition.start'),
-              onClick: (row: any) => void handleRun(row),
-              icon: h(PlayCircleOutlined)
-            },
-            {
-              isDelete: true,
-              text: t('project.synchronization_definition.delete'),
-              onPositiveClick: (row: any) => void handleDelete(row),
-              popTips: t('security.token.delete_confirm')
-            }
-          ]
-        },
-        
-      )
+            icon: h(EditOutlined)
+          },
+
+          {
+            text: t('project.synchronization_definition.start'),
+            onClick: (row: any) => void handleRun(row),
+            icon: h(PlayCircleOutlined)
+          },
+          {
+            isDelete: true,
+            text: t('project.synchronization_definition.delete'),
+            onPositiveClick: (row: any) => void handleDelete(row),
+            popTips: t('security.token.delete_confirm')
+          }
+        ]
+      })
     ]
   }
 
@@ -164,6 +161,6 @@ export function useTable() {
   return {
     variables,
     createColumns,
-    getTableData,
+    getTableData
   }
 }

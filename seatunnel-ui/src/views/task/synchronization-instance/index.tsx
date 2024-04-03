@@ -27,8 +27,8 @@ const SynchronizationInstance = defineComponent({
     const route = useRoute()
     const router = useRouter()
     const { t } = useI18n()
-    let syncTaskType = ref(route.query.syncTaskType || 'BATCH')
-   
+    const syncTaskType = ref(route.query.syncTaskType || 'BATCH')
+
     return { t, syncTaskType }
   },
   render() {

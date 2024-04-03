@@ -165,13 +165,13 @@ const SyncTask = defineComponent({
       router.replace({
         query: !_.isEmpty(query)
           ? {
-            ...route.query,
-            ...query,
-            syncTaskType: props.syncTaskType,
+              ...route.query,
+              ...query,
+              syncTaskType: props.syncTaskType
             }
           : {
               ...route.query,
-              syncTaskType: props.syncTaskType,
+              syncTaskType: props.syncTaskType
             }
       })
       requestData()
@@ -252,7 +252,6 @@ const SyncTask = defineComponent({
       <NSpace vertical>
         <NCard>
           <NGrid cols={26} yGap={10} xGap={5}>
-            
             <NGi span={5}>
               <NInput
                 v-model={[this.taskName, 'value']}

@@ -36,7 +36,7 @@ export default {
       component: components['virtual-tables-list'],
       meta: {
         title: 'virtual-tables-list',
-        activeMenu: 'virtual-tables',
+        activeMenu: 'virtual-tables'
       }
     },
     {
@@ -45,7 +45,7 @@ export default {
       component: components['virtual-tables-detail'],
       meta: {
         title: '虚拟表创建',
-        activeMenu: 'virtual-tables',
+        activeMenu: 'virtual-tables'
       }
     },
     {
@@ -54,7 +54,7 @@ export default {
       component: components['virtual-tables-detail'],
       meta: {
         title: '虚拟表编辑',
-        activeMenu: 'virtual-tables',
+        activeMenu: 'virtual-tables'
       }
     }
   ]
